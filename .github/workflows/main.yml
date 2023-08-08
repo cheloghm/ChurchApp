@@ -21,8 +21,11 @@ jobs:
     - name: Install MAUI Workload
       run: dotnet workload install maui
 
-    - name: Build Solution without trimming
-      run: dotnet build --configuration Release /p:PublishTrimmed=false
+    - name: Build for Android
+      run: dotnet build ChurchApp.csproj --configuration Release -f net7.0-android
 
-    - name: Run Tests (if any)
-      run: dotnet test --configuration Release
+    - name: Build for iOS
+      run: dotnet build ChurchApp.csproj --configuration Release -f net7.0-ios
+
+    - name: Build for MacCatalyst
+      run: dotnet build ChurchApp.csproj --configuration Release -f net7.0-maccatalyst
