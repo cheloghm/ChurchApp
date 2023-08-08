@@ -21,8 +21,8 @@ jobs:
     - name: Install MAUI Workload
       run: dotnet workload install maui
 
-    - name: Build Solution
-      run: dotnet build --configuration Release
+    - name: Build Solution without trimming
+      run: dotnet build --configuration Release /p:PublishTrimmed=false
 
     - name: Run Tests (if any)
       run: dotnet test --configuration Release
